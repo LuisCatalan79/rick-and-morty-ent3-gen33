@@ -1,12 +1,13 @@
 
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
-import useFecht from './hooks/UseFecht'
+import useFecht from '../hooks/useFecht'
 import getRandomNumber from './utils/getRandomNumber'
 import LocationCard from './components/LocationCard'
 import ResidentCard from './components/residentCard'
 import './components/styles/ResidentCard.css'
 import './components/styles/LocationCards.css'
+import useFecht from './hooks/UseFecht'
 
 
 
@@ -16,7 +17,7 @@ function App() {
   const url = `https://rickandmortyapi.com/api/location/${inputValue}`
   const [location, getLocation, hasError] = useFecht(url)
 
-
+  
   useEffect(() => {
     getLocation()
   }, [inputValue])
