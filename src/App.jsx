@@ -1,12 +1,14 @@
 
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
-import useFecht from '../hooks/useFecht'
+import useFecht from './hooks/useFecht'
 import getRandomNumber from './utils/getRandomNumber'
 import LocationCard from './components/LocationCard'
 import ResidentCard from './components/residentCard'
 import './components/styles/ResidentCard.css'
 import './components/styles/LocationCards.css'
+
+
 
 
 
