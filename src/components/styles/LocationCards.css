@@ -1,0 +1,34 @@
+.location{
+    display: grid;
+    justify-content:center;
+    width:auto;
+    border-radius: 0.8rem;
+    background-color: #062226;
+    color: white;
+    transition: transform 100ms ease, box-shadow 100ms ease;
+}
+.location:hover{
+    transform: scale(1.03);
+    box-shadow:0 0 2em #0008 ;
+}
+.location__name{
+    display: flex;
+    justify-content: center;
+}
+.locatrion__list{
+    display: flex;
+    flex-direction: row;
+    gap: 0.8em;
+    justify-content: center;
+}
+.location__item {
+    display: flex;
+    flex-direction: column;
+}
+.location__value{
+    padding-left: 6em ;
+
+}
+
+
+

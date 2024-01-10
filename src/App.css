@@ -1,0 +1,28 @@
+.header__img{
+    width: 100%;
+    height: 350px;
+    border: none;
+    object-fit:cover;
+    
+}
+.header__form{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+.resident__container{
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+}
+.resident__error{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #062226;
+    color: white;
+    width: auto;
+    border-radius: 8px;
+}
