@@ -7,7 +7,7 @@ import LocationCard from './components/LocationCard'
 import ResidentCard from './components/residentCard'
 import './components/styles/ResidentCard.css'
 import './components/styles/LocationCards.css'
-import useFecht from './hooks/UseFecht'
+
 
 
 
