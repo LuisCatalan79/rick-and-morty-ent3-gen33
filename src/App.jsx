@@ -4,7 +4,7 @@ import './App.css'
 import useFecht from './hooks/useFecht'
 import getRandomNumber from './utils/getRandomNumber'
 import LocationCard from './components/LocationCard'
-import ResidentCard from './components/residentCard'
+import ResidentCard from './components/ResidentCard'
 import './components/styles/ResidentCard.css'
 import './components/styles/LocationCards.css'
 
