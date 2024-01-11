@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import useFecht from "../hooks/UseFecht"
+import useFecht from "../hooks/useFecht"
 
 
 const ResidentCard = ({ url }) => {
