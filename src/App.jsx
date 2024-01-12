@@ -7,7 +7,7 @@ import LocationCard from './components/LocationCard'
 import ResidentCard from './components/ResidentCard'
 import './components/styles/ResidentCard.css'
 import './components/styles/LocationCards.css'
-
+import Pagination from '@mui/material/Pagination';
 
 
 
@@ -16,25 +16,72 @@ import './components/styles/LocationCards.css'
 function App() {
   const locationId = getRandomNumber(126)
   const [inputValue, setInputValue] = useState(locationId)
+
+  const [page, setPage] = useState(1)
+  const [totalResidents, setTotalResidents] = useState(0)
+  const [limitResidents, setLimitResidents]=useState(8)
+
+  
+
+
+  const handleChange = (event, value) => {
+    event.preventDefault()
+    setPage(value)
+  }
+  
   const url = `https://rickandmortyapi.com/api/location/${inputValue}`
   const [location, getLocation, hasError] = useFecht(url)
 
+  
+
+  const inputPagination= useRef()
   
   useEffect(() => {
     getLocation()
   }, [inputValue])
 
+  const [residentes, setResidentes] = useState(location?.residents)
+
+  useEffect(() => {
+    setTotalResidents(location?.residents.length)
+    
+  }, [page, handleChange])
+  
+  // useEffect(() => {
+  //   const residents = location?.residents
+  // }, [inputPagination])
+  console.log('-----------------');
+  console.log(residentes);
+
+  
   const inputLocation = useRef()
 
   const handleSubmit = e => {
     e.preventDefault()
     setInputValue(inputLocation.current.value)
   }
+  const startIndex = (page - 1) * limitResidents; // Índice inicial del slice
+  const endIndex = startIndex + limitResidents; // Índice final del slice
+  const residents = location?.residents.slice(startIndex, endIndex) || [];
+  console.log(limitResidents);
+
+  const handlePagination=(event)=>{
+    event.preventDefault()
+    // const startIndex = (page - 1) * limitResidents; // Índice inicial del slice
+    // const endIndex = startIndex + limitResidents; // Índice final del slice
+    // const residents = residentes.slice(startIndex, endIndex) || [];
+    console.log(inputPagination);
+    setLimitResidents(inputPagination.current.value)
+  }
 
   return (
     <div>
       <img className='header__img' src="https://c8.alamy.com/compes/p4jaap/el-titulo-de-la-pelicula-original-rick-y-morty-titulo-en-ingles-rick-y-morty-el-director-de-cine-dan-harmon-justin-roiland-ano-2013-credito-adult-swim-album-p4jaap.jpg" alt="" />
-     
+     <form>
+      <input ref={inputPagination} type="text"/>
+      <button onClick={handlePagination}>Pagination</button>
+     </form>
+
       <form className='header__form' onSubmit={handleSubmit}>
         <input ref={inputLocation} type="text" />
         <button>Search</button>
@@ -50,7 +97,7 @@ function App() {
 
               <div className='resident__container'>
                 {
-                  location?.residents.map(url => (
+                residents?.map(url => (
                     < ResidentCard
                       key={url}
                       url={url}
@@ -58,6 +105,11 @@ function App() {
                   ))
                 }
               </div>
+              <Pagination
+                count={parseInt(Math.ceil(totalResidents / limitResidents), 10)}
+                page={page}
+                onChange={handleChange} 
+              />
             </>
           )
       }
