@@ -110,6 +110,8 @@ function App() {
                 count={parseInt(Math.ceil(totalResidents / limitResidents), 10)}
                 page={page}
                 onChange={handleChange} 
+                color='primary'
+                shape='rounded'
               />
             </>
           )

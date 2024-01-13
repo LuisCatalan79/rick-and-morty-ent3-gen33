@@ -24,11 +24,17 @@ input,button{
 input{
     outline: none;
     border-color: #062226;
+    cursor: pointer;
 }
 button{
     cursor: pointer;
     background-color:#062226;
     color: white;
+    transition: transform 100ms ease, box-shadow 100ms ease;
+}
+button:hover{
+    transform: scale(1.03);
+    box-shadow:0 0 2em #0008 ;
 }
 img{
     width: 100%;
