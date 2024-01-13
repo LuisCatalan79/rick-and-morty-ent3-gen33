@@ -26,3 +26,7 @@
     width: auto;
     border-radius: 8px;
 }
+.resident__pagination{
+    display: flex;
+    justify-content: center;
+}

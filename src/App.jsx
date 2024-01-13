@@ -19,7 +19,7 @@ function App() {
 
   const [page, setPage] = useState(1)
   const [totalResidents, setTotalResidents] = useState(0)
-  const [limitResidents, setLimitResidents]=useState(8)
+  const [limitResidents, setLimitResidents]=useState(9)
 
   
 
@@ -47,9 +47,9 @@ function App() {
     
   }, [page, handleChange])
   
-  // useEffect(() => {
-  //   const residents = location?.residents
-  // }, [inputPagination])
+  useEffect(() => {
+    const residents = location?.residents
+  }, [inputPagination])
   console.log('-----------------');
   console.log(residentes);
 
@@ -60,26 +60,27 @@ function App() {
     e.preventDefault()
     setInputValue(inputLocation.current.value)
   }
-  const startIndex = (page - 1) * limitResidents; // Índice inicial del slice
-  const endIndex = startIndex + limitResidents; // Índice final del slice
-  const residents = location?.residents.slice(startIndex, endIndex) || [];
+  let startIndex = (page - 1) * limitResidents; // Índice inicial del slice
+  let endIndex = startIndex + limitResidents; // Índice final del slice
+  let residents = location?.residents.slice(startIndex, endIndex) || [];
   console.log(limitResidents);
+
+  
 
   const handlePagination=(event)=>{
     event.preventDefault()
-    // const startIndex = (page - 1) * limitResidents; // Índice inicial del slice
-    // const endIndex = startIndex + limitResidents; // Índice final del slice
-    // const residents = residentes.slice(startIndex, endIndex) || [];
+    const inputValue = inputPagination.current.value
     console.log(inputPagination);
-    setLimitResidents(inputPagination.current.value)
+    setLimitResidents(parseInt(inputValue))
+    setPage(1)
   }
 
   return (
     <div>
       <img className='header__img' src="https://c8.alamy.com/compes/p4jaap/el-titulo-de-la-pelicula-original-rick-y-morty-titulo-en-ingles-rick-y-morty-el-director-de-cine-dan-harmon-justin-roiland-ano-2013-credito-adult-swim-album-p4jaap.jpg" alt="" />
-     <form>
+     <form className='header__form'>
       <input ref={inputPagination} type="text"/>
-      <button onClick={handlePagination}>Pagination</button>
+      <button onClick={handlePagination}>Residents</button>
      </form>
 
       <form className='header__form' onSubmit={handleSubmit}>
@@ -105,7 +106,7 @@ function App() {
                   ))
                 }
               </div>
-              <Pagination
+              <Pagination className='resident__pagination'
                 count={parseInt(Math.ceil(totalResidents / limitResidents), 10)}
                 page={page}
                 onChange={handleChange} 
@@ -119,4 +120,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
