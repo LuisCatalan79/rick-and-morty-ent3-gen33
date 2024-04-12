@@ -6,6 +6,7 @@
     
 }
 .header__form{
+    margin: 2em;
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -29,4 +30,9 @@
 .resident__pagination{
     display: flex;
     justify-content: center;
+}
+@media screen and (max-width:280px) {
+    .header__form{
+        margin: 10px;
+    }
 }
